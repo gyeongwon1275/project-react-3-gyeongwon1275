@@ -24,7 +24,9 @@ jobs:
       uses: SpicyPizza/create-envfile@v1
       with: 
         envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        file_name: .env.production  
+        file_name: .env.production
+        directory: ./front
+          
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
