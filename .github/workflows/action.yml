@@ -23,7 +23,7 @@ jobs:
     - name: Make env file
       uses: SpicyPizza/create-envfile@v1
       with: 
-        envkey_BASEURL: "http://52.78.98.183:1275"
+        envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
         file_name: .env.production  
 
     - name: Use Node.js ${{ matrix.node-version }}
