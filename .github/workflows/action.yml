@@ -36,9 +36,10 @@ jobs:
       run: yarn 
     
     - name: Make env file
+      working-directory: ./front
       uses: SpicyPizza/create-envfile@v1
       with: 
-        envkey_BASEURL: ${{secrets.BASEURL}}
+        envkey_BASEURL: ${{ secrets.BASEURL }}
         directory: ./front
         file_name: .env.production
 
