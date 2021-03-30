@@ -8,7 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
-
+    defaults: 
+      run: 
+        working-directory: ./front
     strategy:
       matrix:
         node-version: [12.x]
@@ -32,11 +34,9 @@ jobs:
             ${{ runner.OS }}-
 
     - name: Install dependecies
-      working-directory: ./front
       run: yarn 
     
     - name: Make env file
-      working-directory: ./front
       uses: SpicyPizza/create-envfile@v1
       with: 
         envkey_BASEURL: ${{ secrets.BASEURL }}
@@ -44,11 +44,9 @@ jobs:
         file_name: .env.production
 
     - name: Build
-      working-directory: ./front
       run: yarn build
 
     - name: Deploy
-      working-directory: ./front
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
